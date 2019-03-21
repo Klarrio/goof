@@ -608,11 +608,11 @@ func unmarshalMap(data map[string]interface{}) (*goof, error) {
 			if err != nil {
 				return nil, err
 			}
-			data[InnerErrorKey] = ig
+			g.data = ig.data
 		case string:
-			data[InnerErrorKey] = New(inner)
+			g.data[InnerErrorKey] = New(inner)
 		default:
-			data[InnerErrorKey] = Newf("%v", inner)
+			g.data[InnerErrorKey] = Newf("%v", inner)
 		}
 	}
 
